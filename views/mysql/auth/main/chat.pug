@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Chat Test
+    style.
+      .chat_log { width: 100%; height: 200px; }
+      .name{ width: 10%; }
+      .message{ width: 75%; }
+      .chat{ width: 10%; }
+  body
+    textarea#chatLog.chat_log(readonly)
+    form#chat
+      input#name.name(type='text' value=user.displayName readonly)
+      input#message.message(type='text')
+      input.chat(type='submit', value='chat')
+      #box.box
+        script.
+          socket.emit('login', {
+            name: $('#name').val(),
+            userId: 'userId'
+          });
+          socket.on('other_logined', function(login_user) {
+            $("#chatLog").append(login_user.name + " has joined.\n");
+          });
+          socket.on('disconnect', function(logout_user){
+            $("#chatLog").append(logout_user + " has gone.\n");
+          });
+          $('#chat').submit(function(e){
+            e.preventDefault();
+            var send_data = {
+              name: $('#name').val(),
+              msg: $('#message').val(),
+            };
+            console.log('send_data',send_data);
+            socket.emit('chat',send_data);
+            $('#message').val("");
+          });
+          socket.on('chat', function(reciev_msg){
+            console.log('recevie_data', reciev_msg.msg);
+            $('#chatLog').append(reciev_msg.from.name+":"+reciev_msg.msg+"\n");
+          });

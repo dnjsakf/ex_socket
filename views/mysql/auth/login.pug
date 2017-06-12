@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    style.
+      #login{
+        width: 300px;
+        height: 300px;
+        border: 1px solid;
+        padding: 5px;
+        margin: 0 auto;
+      }
+      #form_input{
+        width: 100%;
+        border: 1px solid;
+      }
+      img#fb{
+        width: 100%;
+      }
+      input#btn_login{
+        width: 100%;
+      }
+      input#username, #password{
+        width:90%;
+        margin: auto;
+      }
+  body
+    div#login
+      h1(align='center') LOGIN
+      form(action='/auth/login' method='post')
+        div#form_input
+          p
+            input#username(type='text' name='username' placeholder='username')
+          p
+            input#password(type='password' name='password', placeholder='password')
+        div
+          p
+            input#btn_login(type='submit' value='LOGIN')
+      p
+        a(href='/auth/facebook')
+          img#fb(src='/img/login/login_fb.png')

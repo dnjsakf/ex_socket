@@ -1,0 +1,19 @@
+extends ./layout
+block content
+  article
+    if(selected_topic)
+      h1= selected_topic.title
+      = selected_topic.description
+      div= "By : "+selected_topic.author
+    else
+      h1 Welcome
+      | This is main page
+  new_topic
+    ul
+      li
+        a(href='/topic/add') add
+      if(selected_topic)
+        li
+          a(href='/topic/'+selected_topic.id+'/edit') edit
+        li
+          a(href='/topic/'+selected_topic.id+'/delete') delete

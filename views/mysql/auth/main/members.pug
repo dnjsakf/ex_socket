@@ -1,0 +1,19 @@
+body
+  ul#mainlist
+    
+  script.
+    $(function(){
+      socket.on('other_logined', function(data){
+        var tag_id = 'conn_'+ data.name;
+        if(data.users.indexOf(tag_id) < 0){
+          var tag_li = $('<li id='+tag_id+'>').text(data.name);
+          $('#mainlist').append(tag_li);
+        }
+        console.log(data.users);
+      });
+      socket.on('disconnect', function(name){
+        var tag_id = 'conn_'+name;
+        console.log('delete', tag_id);
+        $('#'+tag_id).remove();
+      });
+    });

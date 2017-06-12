@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    style.
+      .foobar{
+        width:100%;
+        display: flex;
+      }
+      .displayName{
+        width:100%;
+        flex:8;
+        background: lightblue;
+      }
+      .logout{
+        width:100%;
+        flex:1;
+        background: lightgreen;
+      }
+  body
+    div.foobar
+      a.foobar#displayName
+        =user.displayName
+      a.foobar.logout(href='/auth/logout') logout

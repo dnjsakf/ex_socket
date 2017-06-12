@@ -1,0 +1,6 @@
+extends ./layout
+block content
+  article
+    form(action="/topic/"+selected_topic.id+"/delete" method='post')
+      | 삭제하시겠습니까?
+      input(type='submit' value='삭제')

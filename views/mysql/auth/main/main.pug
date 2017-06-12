@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    style.
+      @media screen and (min-width: 480px) {
+        body {
+            background-color: lightyellow;
+            padding:1vw;
+            width: 90vw;
+            height: 90vh;
+            border: groove black;
+        }
+        .top, .middle{
+          display:flex;
+        }
+        .top{
+          height:10vh;
+        }
+        .middle{
+          height:50vh;
+        }
+        .bottom{
+          height:30vh;
+        }
+        .members{
+          margin: 5px;
+          border: 1px solid;
+          flex: 1
+        }
+        .rooms{
+          margin: 5px;
+          border: 1px solid;
+          flex: 1
+        }
+        .bottom.chat{
+          width:100%;
+        }
+      }
+    script(src='/socket.io/socket.io.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')
+    script.
+      var socket = io();
+      //var chat = io('http://localhost:3000/chat');
+      //var news = io('/news');
+  body
+    div.top
+      div.top.foobar
+        include ./foobar
+    div.middle
+      div.middle.members
+        include ./members
+      div.middle.rooms
+        include ./rooms
+    div.bottom
+      div.bottom.chat
+        include ./chat
