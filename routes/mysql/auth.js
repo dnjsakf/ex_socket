@@ -1,6 +1,6 @@
 module.exports = function(passport, io){
   var route = require('express').Router();
-  var conn = require('../../config/mysql/db')();
+  var conn = require(__dirname+'\\config/mysql/db')();
   var pbkdf2Password = require('pbkdf2-password');
   var hasher = pbkdf2Password();
   route.post('/register', function(req, res){
