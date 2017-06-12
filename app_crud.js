@@ -15,7 +15,7 @@ app.use('/auth', auth);
 var topic = require('./routes/mysql/topic')();
 app.use('/topic', topic);
 */
-app.listen(process.env.PORT || 8080, function(){
+server.listen(process.env.PORT || 8080, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 // server.listen('3000', function(req, res){
